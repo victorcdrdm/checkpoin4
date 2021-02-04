@@ -5,11 +5,14 @@ namespace App\Entity;
 use App\Repository\WineRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=WineRepository::class)
  * @ORM\HasLifecycleCallbacks()
+ *  @Vich\Uploadable
  */
 class Wine
 {
@@ -29,6 +32,12 @@ class Wine
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $picture;
+
+    /**
+     *@Vich\UploadableField(mapping="picture_file", fileNameProperty="picture")
+     * @var File
+     */
+    private $pictureFile;
 
     /**
      * @ORM\Column(type="datetime")
@@ -70,6 +79,7 @@ class Wine
      */
     private $user_id;
 
+
     public function __construct()
     {
         $this->grapes = new ArrayCollection();
@@ -103,6 +113,30 @@ class Wine
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPictureFile()
+    {
+        return $this->pictureFile;
+    }
+
+    /**
+     * @param File|null
+     * @return File
+     */
+    public function setPictureFile(File $picture = null): File
+    {
+        $this->pictureFile = $picture;
+        if ($picture) {
+            $this->updatedAt = new \DateTime('now');
+        }
+        return $this;
+
+
+    }
+
 
     public function getCreatedAt(): ?\DateTimeInterface
     {

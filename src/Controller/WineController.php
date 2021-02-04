@@ -32,6 +32,8 @@ class WineController extends AbstractController
                                                             ): Response
     {
         $wine = new Wine();
+        $pictureFile = $request->files->get('wine');
+
         $resultForm = $request->request->get('wine');
 
         foreach ( $resultForm['grapes'] as $grape) {
@@ -43,6 +45,7 @@ class WineController extends AbstractController
         $wine->setName($resultForm['name']);
         $wine->setYear((int)$resultForm['year']['year']);
         $wine->setComment($resultForm['comment']);
+        $wine->setPicture($pictureFile['pictureFile']);
         $wine->setRegion($regionRepository->findOneBy(['id' => $resultForm['region']]));
         $wine->setVignoble($vignobleRepository->findOneBy(['id'=> $resultForm['vignoble']]));
         $entityManager->persist($wine);

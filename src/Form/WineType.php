@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class WineType extends AbstractType
 {
@@ -38,7 +39,12 @@ class WineType extends AbstractType
 
             ])
             ->add('comment' )
-            //->add('grapes')
+            ->add('pictureFile', VichFileType::class, [
+                'required'      => false,
+                'allow_delete'  => true,
+                'download_uri' => true,
+            ])
+
             ->add('grapes', EntityType::class, [
                     'class'  => Grape::class,
                     'choice_label'     => 'name',
@@ -56,8 +62,8 @@ class WineType extends AbstractType
                 'choice_label' => 'name',
                 'multiple'    => false,
                 'expanded'    => true,
-            ] )
-            //->add('user_id')
+            ])
+
         ;
     }
 
