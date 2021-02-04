@@ -2,43 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d424ee1b-3dbb-40dd-ba7e-3a79db5bd0bc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/controllers.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/controllers/hello_controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/global.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/assets.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/prod/webpack_encore.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/test/webpack_encore.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/webpack_encore.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataFixtures/GrapeFixture.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataFixtures/RegionFixture.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataFixtures/TypeFixture.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataFixtures/UserFixture.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataFixtures/VignobleFixture.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Grape.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Region.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Type.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Vignoble.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Wine.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/GrapeRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/RegionRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/TypeRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/VignobleRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/WineRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/wine/home.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/wine/region.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,6 +129,8 @@
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/vendor/jms/metadata" />
+      <path value="$PROJECT_DIR$/vendor/vich/uploader-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1nycr8C2Futgnv03kPEo0Hi1Jis" />
@@ -203,6 +169,7 @@
       <workItem from="1612422049974" duration="5226000" />
       <workItem from="1612429681023" duration="9311000" />
       <workItem from="1612439134004" duration="1265000" />
+      <workItem from="1612468345458" duration="537000" />
     </task>
     <servers />
   </component>
