@@ -5,14 +5,12 @@ namespace App\Entity;
 use App\Repository\WineRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=WineRepository::class)
  * @ORM\HasLifecycleCallbacks()
- *  @Vich\Uploadable
  */
 class Wine
 {
@@ -28,16 +26,6 @@ class Wine
      */
     private $name;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $picture;
-
-    /**
-     *@Vich\UploadableField(mapping="picture_file", fileNameProperty="picture")
-     * @var File
-     */
-    private $pictureFile;
 
     /**
      * @ORM\Column(type="datetime")
@@ -79,6 +67,10 @@ class Wine
      */
     private $user_id;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $picture;
 
     public function __construct()
     {
@@ -100,41 +92,6 @@ class Wine
         $this->name = $name;
 
         return $this;
-    }
-
-    public function getPicture(): ?string
-    {
-        return $this->picture;
-    }
-
-    public function setPicture(?string $picture): self
-    {
-        $this->picture = $picture;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPictureFile()
-    {
-        return $this->pictureFile;
-    }
-
-    /**
-     * @param File|null
-     * @return File
-     */
-    public function setPictureFile(File $picture = null): File
-    {
-        $this->pictureFile = $picture;
-        if ($picture) {
-            $this->updatedAt = new \DateTime('now');
-        }
-        return $this;
-
-
     }
 
 
@@ -177,8 +134,6 @@ class Wine
     {
         $this->year = $year;
     }
-
-
 
 
     public function getComment(): ?string
@@ -271,5 +226,17 @@ class Wine
     public function onPreUpdate()
     {
         $this->updatedAt = new \DateTime();
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(string $picture): self
+    {
+        $this->picture = $picture;
+
+        return $this;
     }
 }

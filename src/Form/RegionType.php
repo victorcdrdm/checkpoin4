@@ -14,7 +14,7 @@ class RegionType extends AbstractType
     {
         $builder
             ->add('name', EntityType::class, [
-                    'choice_label'=> 'name',
+                    'label'       => false,
                     'class'       => Region::class,
                     'multiple'    => false,
                     'expanded'    => false,

@@ -6,11 +6,10 @@ use App\Entity\Region;
 use App\Entity\Wine;
 use App\Form\RegionType;
 use App\Form\WineType;
-
 use App\Repository\GrapeRepository;
 use App\Repository\RegionRepository;
 use App\Repository\VignobleRepository;
-
+use App\Repository\WineRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use http\Client\Curl\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,7 +31,6 @@ class WineController extends AbstractController
                                                             ): Response
     {
         $wine = new Wine();
-        $pictureFile = $request->files->get('wine');
 
         $resultForm = $request->request->get('wine');
 
@@ -45,7 +43,7 @@ class WineController extends AbstractController
         $wine->setName($resultForm['name']);
         $wine->setYear((int)$resultForm['year']['year']);
         $wine->setComment($resultForm['comment']);
-        $wine->setPicture($pictureFile['pictureFile']);
+        $wine->setPicture($resultForm['picture']);
         $wine->setRegion($regionRepository->findOneBy(['id' => $resultForm['region']]));
         $wine->setVignoble($vignobleRepository->findOneBy(['id'=> $resultForm['vignoble']]));
         $entityManager->persist($wine);
@@ -56,40 +54,33 @@ class WineController extends AbstractController
     }
 
     /**
-     * @Route("/region", name="region")
+     * @Route("/", name="home")
      */
-    public function region(Request $request, RegionRepository $regionRepository): Response
+    public function start(WineRepository $wineRepository,
+                          GrapeRepository $grapeRepository,
+                          Request $request ,
+                          RegionRepository $regionRepository) : Response
     {
-        $region = new Region();
 
+        $region = new Region();
         $form = $this->createForm(RegionType::class , $region);
         $form->handleRequest($request);
-
         if($form->isSubmitted() && $form->isValid()) {
             $region = $form->getData();
             $region = $regionRepository->findOneBy(['name' => $region->getName()]);
-
             $wine = new Wine();
-
             $formNewWine = $this->createForm(WineType::class , $wine, ['region' => $region ]);
             $formNewWine->handleRequest($request);
-
             return $this->render('wine/index.html.twig', [
                 'form' => $formNewWine->createView(),
                 'region' => $region,
             ]);
         }
-
-        return $this->render('wine/region.html.twig', [
-            'form' => $form->createView()
+             $wines = $wineRepository->findAll();
+           return $this->render('wine/home.html.twig',[
+            'wines' => $wines,
+             'form' => $form->createView()
         ]);
-    }
 
-    /**
-     * @Route("/home", name="home")
-     */
-    public function start() : Response
-    {
-        return $this->render('wine/home.html.twig');
     }
 }

@@ -7,6 +7,7 @@ use App\Entity\Grape;
 use App\Entity\Region;
 use App\Entity\Vignoble;
 use App\Entity\Wine;
+use Doctrine\DBAL\Types\TextType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -28,7 +29,7 @@ class WineType extends AbstractType
 
             ->add('year', DateType::class, [
                 'label'    => 'Milesime',
-                'years'    => range(1920, 2060,1),
+                'years'    => range(1980, 2020,1),
                 'format'   => 'dd-MM-yyyy',
                 'required' => true,
             ])
@@ -39,14 +40,10 @@ class WineType extends AbstractType
 
             ])
             ->add('comment' )
-            ->add('pictureFile', VichFileType::class, [
-                'required'      => false,
-                'allow_delete'  => true,
-                'download_uri' => true,
-            ])
 
             ->add('grapes', EntityType::class, [
                     'class'  => Grape::class,
+
                     'choice_label'     => 'name',
                     'multiple'    => true,
                     'expanded'    => true,
@@ -62,7 +59,9 @@ class WineType extends AbstractType
                 'choice_label' => 'name',
                 'multiple'    => false,
                 'expanded'    => true,
+                'required' => true,
             ])
+            ->add('picture')
 
         ;
     }
