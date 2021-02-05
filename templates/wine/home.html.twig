@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="banner">
 
+    <div class="banner">
         <h1>N'oubliez plus jamais les vins que vous avez aimés</h1>
     </div>
 
@@ -29,11 +29,14 @@
             </div>
         </div>
     </div>
+
+    <h2 class="ml-2">bordeaux</h2>
     <div class="container d-flex justify-content-center mb-4">
             <div class="row">
                 {% for wine in wines %}
-                    <div class="card col-md-3 col-sm-1 " style="width: 15rem" >
-                        <img class="card-img-top mt-5" src="{{ wine.picture }}" alt="Card image cap">
+                    {% if wine.region == 'Bordeaux' %}
+                    <div class="card" style="width: 15rem" >
+                        <img class="card-img-top mt-4" src="{{ wine.picture }}" alt="Card image cap">
                         <div class="card-body align-baseline mt-5">
                             <h3>{{ wine.name }}</h3>
                             <h6>{{ wine.year }}</h6>
@@ -47,9 +50,56 @@
                             <p>note: {{ wine.comment }}</p>
                         </div>
                     </div>
+                    {% endif %}
                 {% endfor %}
             </div>
-        </ul>
     </div>
-
+    <h2 class="ml-2">Bourgogne</h2>
+    <div class="container d-flex justify-content-center mb-4">
+        <div class="row">
+            {% for wine in wines %}
+                {% if wine.region == 'Bourgogne' %}
+                    <div class="card" style="width: 15rem" >
+                        <img class="card-img-top mt-4" src="{{ wine.picture }}" alt="Card image cap">
+                        <div class="card-body align-baseline mt-5">
+                            <h3>{{ wine.name }}</h3>
+                            <h6>{{ wine.year }}</h6>
+                            <h6>{{ wine.region }} </h6>
+                            <h6>{{ wine.vignoble }}</h6>
+                            <div>
+                                {% for grape in wine.grapes  %}
+                                    {{ grape }}
+                                {% endfor %}
+                            </div>
+                            <p>note: {{ wine.comment }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <h2 class="ml-2">Côte du Rhône</h2>
+    <div class="container d-flex justify-content-center mb-4">
+        <div class="row">
+            {% for wine in wines %}
+                {% if wine.region == 'Côtes du Rhône' %}
+                    <div class="card" style="width: 15rem" >
+                        <img class="card-img-top mt-4" src="{{ wine.picture }}" alt="Card image cap">
+                        <div class="card-body align-baseline mt-5">
+                            <h3>{{ wine.name }}</h3>
+                            <h6>{{ wine.year }}</h6>
+                            <h6>{{ wine.region }} </h6>
+                            <h6>{{ wine.vignoble }}</h6>
+                            <div>
+                                {% for grape in wine.grapes  %}
+                                    {{ grape }}
+                                {% endfor %}
+                            </div>
+                            <p>note: {{ wine.comment }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

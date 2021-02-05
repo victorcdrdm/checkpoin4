@@ -60,7 +60,7 @@ class WineController extends AbstractController
     }
 
     /**
-     * @Route("/", name="home")
+     * @Route("/home", name="home")
      */
     public function start(WineRepository $wineRepository,
                           Request $request ,
