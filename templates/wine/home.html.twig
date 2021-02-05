@@ -32,9 +32,9 @@
     <div class="container d-flex justify-content-center mb-4">
             <div class="row">
                 {% for wine in wines %}
-                    <div class="card col-md-3 col-sm-1 b-0" style="width: 15rem" >
-                        <img class="card-img-top" src="{{ wine.picture }}" alt="Card image cap">
-                        <div class="card-body align-baseline">
+                    <div class="card col-md-3 col-sm-1 " style="width: 15rem" >
+                        <img class="card-img-top mt-5" src="{{ wine.picture }}" alt="Card image cap">
+                        <div class="card-body align-baseline mt-5">
                             <h3>{{ wine.name }}</h3>
                             <h6>{{ wine.year }}</h6>
                             <h6>{{ wine.region }} </h6>

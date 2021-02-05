@@ -3,37 +3,37 @@
 {% block title %}Hello WineController!{% endblock %}
 
 {% block body %}
-    <div class="body-form">
-        <div class="form-wine pt-4">
-    <div class="d-flex justify-content-center text-center">
-    {{ form_start(formNew, {'action': path('wine'), 'method': 'POST'}) }}
-    <div class="d-flex justify-content-center">
-        <div class="d-flex flex-column">
-        <h4>le nom de ton vin</h4>
-        {{ form_row(formNew.name, {'label':false}) }}
+    <div class="body-form pt-5">
+        <div class="form-wine ">
+            <div class="d-flex justify-content-center text-center ">
+                {{ form_start(formNew, {'action': path('wine'), 'method': 'POST'}) }}
+                <div class="d-flex justify-content-center">
+                    <div class="d-flex flex-column">
+                    <h4>le nom de ton vin</h4>
+                    {{ form_row(formNew.name, {'label':false}) }}
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mb-3">
+                    {{ form_row(formNew.year, {'date_pattern': '<span style="display: none;">{{ day }}{{ month }}</span>{{ year }}'}) }}
+                </div>
+                <div>
+                    <div class="d-flex flex-column">
+                        <p>Ajoute un comentaire pour te souvenir de ce vin</p>
+                        {{ form_row(formNew.comment , {'label':false}) }}
+                    <div class="d-flex flex-column">
+                </div>
+                <div class="offset-4 col-4 justify-content-center mb-3">
+                    <p>Sélectionne les cepage de ce vin</p>
+                    {{ form_row(formNew.grapes) }}
+                </div>
+                {{ form_row(formNew.vignoble) }}
+                {{ form_row(formNew.picture) }}
+                 <div class="d-none">
+                {{ form_row(formNew.region) }}
+                 </div>
+                    </div>
+                <input type='submit' value='Add category'>
+                {{ form_end(formNew) }}
         </div>
-    </div>
-    <div class="d-flex justify-content-center mb-3">
-        {{ form_row(formNew.year, {'date_pattern': '<span style="display: none;">{{ day }}{{ month }}</span>{{ year }}'}) }}
-    </div>
-    <div>
-        <div class="d-flex flex-column">
-            <p>Ajoute un comentaire pour te souvenir de ce vin</p>
-            {{ form_row(formNew.comment , {'label':false}) }}
-        <div class="d-flex flex-column">
-    </div>
-    <div class="offset-4 col-4 justify-content-center mb-3">
-        <p>Sélectionne les cepage de ce vin</p>
-        {{ form_row(formNew.grapes) }}
-    </div>
-    {{ form_row(formNew.vignoble) }}
-    {{ form_row(formNew.picture) }}
-     <div class="d-none">
-    {{ form_row(formNew.region) }}
-     </div>
-        </div>
-    <input type='submit' value='Add category'>
-    {{ form_end(formNew) }}
-    </div>
     </div>
 {% endblock %}

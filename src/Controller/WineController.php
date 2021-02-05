@@ -81,11 +81,11 @@ class WineController extends AbstractController
                 'region' => $region,
             ]);
         }
-            $regions = $regionRepository->findAll();
-            $wines = $wineRepository->findAll();
+
+            $wines = $wineRepository->findall();
             return $this->render('wine/home.html.twig',[
              'wines' => $wines,
-             'regions' => $regions,
+
              'form' => $form->createView()
         ]);
 
