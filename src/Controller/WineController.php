@@ -30,6 +30,12 @@ class WineController extends AbstractController
                           RegionRepository $regionRepository
                                                             ): Response
     {
+        $region = new Region();
+        $form = $this->createForm(RegionType::class , $region);
+        $form->handleRequest($request);
+
+
+
         $wine = new Wine();
 
         $resultForm = $request->request->get('wine');
@@ -49,7 +55,7 @@ class WineController extends AbstractController
         $entityManager->persist($wine);
         $entityManager->flush();
 
-        return $this->render('wine/home.html.twig');
+        return $this->redirectToRoute('home');
 
     }
 
@@ -57,7 +63,6 @@ class WineController extends AbstractController
      * @Route("/", name="home")
      */
     public function start(WineRepository $wineRepository,
-                          GrapeRepository $grapeRepository,
                           Request $request ,
                           RegionRepository $regionRepository) : Response
     {
@@ -72,13 +77,15 @@ class WineController extends AbstractController
             $formNewWine = $this->createForm(WineType::class , $wine, ['region' => $region ]);
             $formNewWine->handleRequest($request);
             return $this->render('wine/index.html.twig', [
-                'form' => $formNewWine->createView(),
+                'formNew' => $formNewWine->createView(),
                 'region' => $region,
             ]);
         }
-             $wines = $wineRepository->findAll();
-           return $this->render('wine/home.html.twig',[
-            'wines' => $wines,
+            $regions = $regionRepository->findAll();
+            $wines = $wineRepository->findAll();
+            return $this->render('wine/home.html.twig',[
+             'wines' => $wines,
+             'regions' => $regions,
              'form' => $form->createView()
         ]);
 

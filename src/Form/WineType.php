@@ -25,8 +25,6 @@ class WineType extends AbstractType
 
         $builder
             ->add('name')
-            //->add('picture')
-
             ->add('year', DateType::class, [
                 'label'    => 'Milesime',
                 'years'    => range(1980, 2020,1),
@@ -35,16 +33,14 @@ class WineType extends AbstractType
             ])
             ->add('region', EntityType::class, [
                 'class' => Region::class,
-                'label' => $options['region'],
-                'multiple'=> false,
+                'data' => $options['region'],
 
             ])
             ->add('comment' )
 
             ->add('grapes', EntityType::class, [
                     'class'  => Grape::class,
-
-                    'choice_label'     => 'name',
+                    'choice_label'=> 'name',
                     'multiple'    => true,
                     'expanded'    => true,
                 ]
